@@ -1,0 +1,25 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    list<double> numbers = { 5.2, 15.7, 12.3, 8.6, 18.4, 25.1, 11.9 };
+
+    cout << "Список до изменений: " << endl;
+    for (double n : numbers) cout << n << " ";
+    cout << endl;
+
+    for (auto iter = numbers.begin(); iter != numbers.end(); ++iter) {
+        if (*iter >= 10 && *iter <= 20) {
+            if (iter != numbers.begin()) {
+                iter = numbers.erase(prev(iter));
+            }
+        }
+    }
+
+    cout << "Список после изменений: " << endl;
+    for (double n : numbers) cout << n << " ";
+
+    return 0;
+}
