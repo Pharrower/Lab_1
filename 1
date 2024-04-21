@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+#include <deque>
+using namespace std;
+
+string s;
+int cnt;
+double x;
+deque <double> ve; //создаём очередь
+
+//команда для добавления элемента в очередь
+void push(double x) {
+	ve.push_back(x);
+	if (x >= 0) cnt += 1;
+	cout << "Число добавлено в очередь\n";
+}
+
+//команда для удаления элемента из очереди
+void pop() {
+	if ((int)ve.size() == 0) {
+		cout << "В очереди нет элементов\n";
+	}
+	else {
+		cout << "Удалённое число: " << ve.front() << '\n';
+		ve.pop_front();
+	}
+}
+//команда для вывода первого элемента очереди
+void front() {
+	if ((int)ve.size() == 0) {
+		cout << "В очереди нет элементов\n";
+	}
+	else {
+		cout << "Первый элемент очереди: " << ve.front() << '\n';
+	}
+}
+//команда для вывода кол-ва положительных элементов очереди
+void count() {
+	cout << "Количество положительных чисел: " << cnt << endl;
+}
+
+int main() {
+	setlocale(LC_ALL, "RU");
+	cout << "Введите необходимые команды: \npush - добавление числа в очередь\npop - удаление из очереди первого элемента\nfront - вывести значение перового элемента\ncount - вывести кол-во положительных чисел очереди\nexit - заверешние программы" << endl;
+	//считывает строку s и запускает выполнение определённой функции
+	while (cin >> s) {
+		if (s == "exit") {
+			cout << "bye\n";
+			return 0;
+		}
+		if (s == "push") {
+			cin >> x;
+			push(x);
+		}
+		if (s == "pop") pop();
+		if (s == "front") front();
+		if (s == "count") count();
+	}
+	return 0;
+}
