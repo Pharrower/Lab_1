@@ -1,0 +1,44 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+struct Product {
+    string name;
+    double price;
+};
+
+int main() {
+    setlocale(0, "rus");
+
+    stack<Product> productStack;
+    int n;
+    cout << "Введите кол-во товаров: "; cin >> n;
+    for (int i = 0; i < n; i++) {
+        Product newProduct;
+        cout << "Введите название товара: ";
+        cin >> newProduct.name;
+        cout << "Введите цену товара: ";
+        cin >> newProduct.price;
+
+        productStack.push(newProduct);
+    }
+
+    double srPrice = 0.0;
+    int cnt = 0;
+
+    cout << "Товары и их цена:" << endl;
+
+    while (!productStack.empty()) {
+        Product Product = productStack.top();
+        cout << "Название: " << Product.name << ", Цена: " << Product.price << endl;
+
+        srPrice += Product.price;
+        cnt++;
+
+        productStack.pop();
+    }
+
+    cout << "Средняя цена товаров: " << srPrice / cnt << endl;
+
+    return 0;
+}
