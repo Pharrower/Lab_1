@@ -1,0 +1,25 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    list<int> mylist = { 10, 5, 10, 8, 3 }; // Создаем список из целых чисел
+
+    // Удаление первого элемента со значением 10
+    for (auto it = mylist.begin(); it != mylist.end(); ++it) {
+        if (*it == 10) {
+            mylist.erase(it);
+            break; // Выходим из цикла после удаления первого элемента со значением 10
+        }
+    }
+
+    // Делаем список циклическим
+    mylist.push_back(mylist.front()); // Последний элемент равен первому
+
+    // Выводим циклический список
+    cout << "Циклический список после удаления первого элемента со значением 10: ";
+    for (int num : mylist) cout << num << " ";
+
+    return 0;
+}
