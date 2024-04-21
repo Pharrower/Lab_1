@@ -1,0 +1,18 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main(){
+    setlocale(LC_ALL, "rus");
+
+    list<int> numbers{ 5, 3, 10, 2, 6 }; //создание списка
+    int sum = 0;
+
+    //перебор в циклке
+    for (int n : numbers) {
+        if (n % 5 == 0) sum += n;
+    }
+
+    cout << "Сумма значений элементов списка, кратных 5 = " << sum << endl;
+    return 0;
+}
