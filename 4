@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+#include <vector> 
+using namespace std;
+
+string s;
+int x;
+vector <int> stack;
+//функция добавления элемента в стек
+void push(int x) {
+    stack.push_back(x);
+    cout << "Элемент добавлен\n";
+}
+//функция удаления элемента из стека
+void pop() {
+    if ((int)stack.size() == 0) {
+        cout << "error\n";
+    }
+    else {
+        cout << "Удалён элемент: " << stack.back() << '\n';
+        stack.pop_back();
+    }
+}
+//функция вывода всех элементов стека
+void len() {
+    cout << "Содержимое стека: " << endl;
+    for (int i = stack.size() - 1; i >= 0; i--){
+        cout << stack[i] << " ";
+    }
+    cout << endl;
+}
+//функция вывода максимального элемента стека
+void max() {
+    int maxElement = stack[0];
+    for (int i = 1; i < stack.size(); i++) {
+        if (stack[i] > maxElement) maxElement = stack[i];
+    }
+    cout << "Максимальный элемент стека: " << maxElement << endl;
+}
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    while (cin >> s) {
+        if (s == "exit") {
+            cout << "bye\n";
+            return 0;
+        }
+        if (s == "push") {
+            cin >> x;
+            push(x);
+        }
+        if (s == "pop") {
+            pop();
+        }
+        if (s == "len") {
+            len();
+        }
+        if (s == "max") {
+            max();
+        }
+    }
+    return 0;
+}
