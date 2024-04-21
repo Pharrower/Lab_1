@@ -1,0 +1,18 @@
+#include <iostream>
+#include <list>
+#include <string>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+//создание списка
+    list<string> list = { "Cat", "Bread", "egg", "car", "Monkey" };
+    cout << "Строки, начинающиеся с заглавной буквы: " << endl;
+//перебор в циклке
+    for (auto iter = list.begin(); iter != list.end(); iter++) {
+        if ((*iter)[0] >= 'A' && (*iter)[0] <= 'Z') {
+            cout << *iter << endl;
+        }
+    }
+    return 0;
+}
