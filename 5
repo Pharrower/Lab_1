@@ -1,0 +1,51 @@
+#include <stack>
+#include <string>
+#include <sstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    bool run = true;
+    stack<double> s;
+    while (run) {
+        string op;
+        cin >> op;
+        istringstream iss(op);
+        double val;
+        if (iss >> val) {
+            s.push(val);
+        }
+        else {
+            val = s.top();
+            s.pop();
+            if (op == "+") {
+                val += s.top();
+                s.pop();
+                s.push(val);
+            }
+            else if (op == "-") {
+                val -= s.top();
+                s.pop();
+                s.push(val);
+            }
+            else if (op == "*") {
+                val *= s.top();
+                s.pop();
+                s.push(val);
+            }
+            else if (op == "/") {
+                val /= s.top();
+                s.pop();
+                s.push(val);
+            }
+            else if (op == "=") {
+                cout << val << endl;
+                run = false;
+            }
+            else {
+                cout << "error" << endl;
+                run = false;
+            }
+        }
+    }
+}
