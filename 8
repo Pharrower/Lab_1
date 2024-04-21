@@ -1,0 +1,28 @@
+Решение:
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    list<double> numbers = { 3.14, -2.7, 0.5, -1.8, 2.71, -4.1, 1.1 };
+    list<double>::iterator it = numbers.begin();
+    cout << "Список до изменений: " << endl;
+    for (double n : numbers) cout << n << " ";
+    cout << endl;
+
+    while (it != numbers.end()) {
+        if (*it < 0) {
+            it = numbers.erase(next(it));
+        }
+        else {
+            it = next(it);
+        }
+    }
+
+    cout << "Список после изменений: " << endl;
+    for (double n : numbers) cout << n << " ";
+    cout << endl;
+
+    return 0;
+}
