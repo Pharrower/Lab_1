@@ -5,10 +5,18 @@ using namespace std;
 
 int main() {
     setlocale(LC_ALL, "rus");
-//создание списка
-    list<string> list = { "Cat", "Bread", "egg", "car", "Monkey" };
+    list<string> list; //создание списка
+    int cnt;
+    string word;
+    cout << "Пожалуйста, введите кол-во строк: " << endl;
+    cin >> cnt;
+    cout << "Пожалуйста, введите строки: " << endl;
+    for (int i = 0; i < cnt; i++) {
+        cin >> word;
+        list.push_back(word);
+    }
     cout << "Строки, начинающиеся с заглавной буквы: " << endl;
-//перебор в циклке
+    //перебор в циклке
     for (auto iter = list.begin(); iter != list.end(); iter++) {
         if ((*iter)[0] >= 'A' && (*iter)[0] <= 'Z') {
             cout << *iter << endl;
