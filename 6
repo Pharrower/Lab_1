@@ -2,13 +2,22 @@
 #include <list>
 using namespace std;
 
-int main(){
+int main() {
     setlocale(LC_ALL, "rus");
 
-    list<int> numbers{ 5, 3, 10, 2, 6 }; //создание списка
-    int sum = 0;
+    list<int> numbers; //создание списка
 
-    //перебор в циклке
+    int cnt,num; //переменные для кол-ва элементов и самих элементов
+    cout << "Пожалуйтса, введите кол-во элементов списка: " << endl;
+    cin >> cnt;
+    cout << "Пожалуйтса, введите элементы списка: " << endl;
+    for (int i = 0; i < cnt; i++) {
+        cin >> num;
+        numbers.push_back(num); //добавление элементов в список
+    }
+
+    int sum = 0;
+    //перебор в циклке: если чисто кратно 5, сумма увеличивается на это число
     for (int n : numbers) {
         if (n % 5 == 0) sum += n;
     }
